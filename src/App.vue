@@ -1,47 +1,16 @@
-<script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+<script setup>
+import { ref } from 'vue'
+import ArticleList from './components/ArticleList.vue'
+
+const articles = ref([
+  { id: 1, title: 'Введение в Vue 3', author: 'Иван Петров', body: 'Текст статьи...', isPublished: true },
+  { id: 2, title: 'Работа с компонентами', author: 'Мария Сидорова', body: 'Текст статьи...', isPublished: false },
+  { id: 3, title: 'Реактивность в деталях', author: 'Алексей Смирнов', body: '', isPublished: true },
+])
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
-
   <main>
-    <TheWelcome />
+    <ArticleList :articles="articles" msg="Список статей" />
   </main>
 </template>
-
-<style scoped>
-header {
-  line-height: 1.5;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-}
-</style>
